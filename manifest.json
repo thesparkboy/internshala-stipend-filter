@@ -6,20 +6,21 @@
 			"default_title": "Set the minimum stipend",
 			"default_popup": "popup.html"
 	},
+	"icons": { "128": "images/icon.png" },
 	"permissions": [
 	 "activeTab",
 	 "tabs",
 	 "webNavigation"
 	 ],
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": ["js/background.js"]
 	},
 	"content_scripts": [
 	{
 		"matches": [
 			"https://internshala.com/*","http://internshala.com/*"
 		],
-		"js": ["script.js"],
+		"js": ["js/script.js"],
 		"run_at": "document_end"
 	}
 	]

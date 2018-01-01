@@ -7,11 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onClk(){
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		chrome.tabs.sendMessage(tabs[0].id, {stipend: document.getElementById("stpnd").value}, function(response) {
-			console.log(response.farewell);
+	if(isNaN(parseInt(document.getElementById("stpnd").value)) || parseInt(document.getElementById("stpnd").value) < 0){
+		alert('Please enter a valid number greater than 0.');
+	} else{
+		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+			chrome.tabs.sendMessage(tabs[0].id, {stipend: document.getElementById("stpnd").value}, function(response) {
+				console.log(response.farewell);
+			});
 		});
-	});
+	}
 }
 
 function reset(){
