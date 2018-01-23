@@ -66,7 +66,6 @@ chrome.runtime.onMessage.addListener(
 			for(var i = 0;i < data.length; i++) {
 				if(data[i].getElementsByClassName("stipend_container_table_cell")[0] != undefined){
 					var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
-					console.log(data[i]);
 					if(stipend.indexOf("-") != -1){
 						stipend = stipend.split("-")[0];
 					}
