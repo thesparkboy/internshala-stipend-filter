@@ -23,21 +23,29 @@ chrome.runtime.onMessage.addListener(
  	 		var data = document.getElementsByClassName("individual_internship");
 			if(minValue == 0){
 				for(var i = 0;i < data.length; i++) {
-					var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
-					data[i].style.display = "inline";
+					if(data[i].getElementsByClassName("stipend_container_table_cell")[0] != undefined){
+						var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
+						data[i].style.display = "inline";
+					}else{
+						data[i].style.display = "none";
+					}	
 				}
 			} else{
 				for(var i = 0;i < data.length; i++) {
-					var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
-					if(stipend.indexOf("-") != -1){
-						stipend = stipend.split("-")[0];
-					}
-					if(isNaN(parseInt(stipend))){
-						data[i].style.display = "none";
-					} else if(parseInt(stipend) < minValue){
-						data[i].style.display = "none";
+					if(data[i].getElementsByClassName("stipend_container_table_cell")[0] != undefined){
+						var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
+						if(stipend.indexOf("-") != -1){
+							stipend = stipend.split("-")[0];
+						}
+						if(isNaN(parseInt(stipend))){
+							data[i].style.display = "none";
+						} else if(parseInt(stipend) < minValue){
+							data[i].style.display = "none";
+						}else{
+							data[i].style.display = "inline";	
+						}
 					}else{
-						data[i].style.display = "inline";	
+						data[i].style.display = "none";
 					}
 				}
 			}
@@ -47,21 +55,30 @@ chrome.runtime.onMessage.addListener(
 		var data = document.getElementsByClassName("individual_internship");
 		if(minValue == 0){
 			for(var i = 0;i < data.length; i++) {
-				var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
-				data[i].style.display = "inline";
+				if(data[i].getElementsByClassName("stipend_container_table_cell")[0] != undefined){
+					var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
+					data[i].style.display = "inline";
+				}else{
+					data[i].style.display = "none";
+				}	
 			}
 		}else{
 			for(var i = 0;i < data.length; i++) {
-				var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
-				if(stipend.indexOf("-") != -1){
-					stipend = stipend.split("-")[0];
-				}
-				if(isNaN(parseInt(stipend))){
-					data[i].style.display = "none";
-				}else if(parseInt(stipend) < minValue){
-					data[i].style.display = "none";
+				if(data[i].getElementsByClassName("stipend_container_table_cell")[0] != undefined){
+					var stipend = data[i].getElementsByClassName("stipend_container_table_cell")[0].innerText.split(" ")[0];
+					console.log(data[i]);
+					if(stipend.indexOf("-") != -1){
+						stipend = stipend.split("-")[0];
+					}
+					if(isNaN(parseInt(stipend))){
+						data[i].style.display = "none";
+					}else if(parseInt(stipend) < minValue){
+						data[i].style.display = "none";
+					}else{
+						data[i].style.display = "inline";	
+					}
 				}else{
-					data[i].style.display = "inline";	
+					data[i].style.display = "none";
 				}
 			}
 		}	

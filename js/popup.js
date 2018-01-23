@@ -12,7 +12,7 @@ function onClk(){
 	} else{
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 			chrome.tabs.sendMessage(tabs[0].id, {stipend: document.getElementById("stpnd").value}, function(response) {
-				console.log(response.farewell);
+				console.log(response);
 			});
 		});
 	}
@@ -21,7 +21,7 @@ function onClk(){
 function reset(){
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {stipend: 0}, function(response) {
-			console.log(response.farewell);
+			console.log(response);
 		});
 	});
 }
